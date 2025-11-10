@@ -1,0 +1,24 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #5F2A7F, #A3A3A3);
+  color: #fff;
+  text-align: center;
+}
+
+.logo {
+  height: 60px;
+}
+
+.feedback.correct { color: green; }
+.feedback.incorrect { color: red; }
+
+#game button {
+  background-color: #5F2A7F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+#game button:hover {
+  background-color: #4A1F6C;
+}
