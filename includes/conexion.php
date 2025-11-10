@@ -1,17 +1,15 @@
 <?php
-// Conexión segura a SQL Server (Producción)
-$serverName = "DESKTOP-95J5O37\\SQLEXPRESS01";
-$connectionOptions = array(
-    "Database" => "Excel_ChallengeDB",
-    "Uid" => "excel_user",
-    "PWD" => "Str0ng_Pass_!2025",
-    "CharacterSet" => "UTF-8"
-);
+// Conexión a PostgreSQL en Render
+$host = getenv("DB_HOST");
+$port = getenv("DB_PORT");
+$dbname = getenv("DB_NAME");
+$user = getenv("DB_USER");
+$password = getenv("DB_PASS");
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
-if ($conn === false) {
-    error_log(print_r(sqlsrv_errors(), true)); // Log interno, no mostrar al usuario
-    die("⚠️ Error al conectar con la base de datos. Por favor, inténtalo más tarde.");
+if (!$conn) {
+    die("❌ Error de conexión: " . pg_last_error());
 }
+// echo "✅ Conexión exitosa a PostgreSQL en Render.";
 ?>
