@@ -5,7 +5,6 @@ $dbname = getenv("DB_NAME");
 $user = getenv("DB_USER");
 $password = getenv("DB_PASS");
 
-// Conexión con SSL obligatorio y verificación
 $conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require options='--client_encoding=UTF8'";
 
 $conn = pg_connect($conn_string);
