@@ -5,14 +5,14 @@ $dbname = getenv("DB_NAME");
 $user = getenv("DB_USER");
 $password = getenv("DB_PASS");
 
-$conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
+// Conexión con SSL habilitado
+$conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
 
 $conn = pg_connect($conn_string);
 
 if (!$conn) {
-    echo "❌ Error de conexión: " . pg_last_error();
-    exit;
+    die("❌ Error de conexión: " . pg_last_error());
 } else {
-    echo "✅ Conexión exitosa a la base de datos PostgreSQL ($dbname)";
+    echo "✅ Conexión exitosa a PostgreSQL (Render) - Base de datos: $dbname";
 }
 ?>
